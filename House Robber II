@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int size = nums.size(), sum1=0, sum2=0, i;
+        
+         if(nums.size()==1)
+            return nums[0];
+        if(nums.size()==2)
+            return(max(nums[0],nums[1]));
+        
+        int vect[size];
+        vect[0] = nums[0];
+        vect[1] = max(nums[0] , nums[1]);
+        for(i = 2; i<size; i++)
+            vect[i] = max((vect[i-2] + nums[i]) , vect[i-1]);
+        sum1 = vect[size-2];
+        
+        vect[1] = nums[1];
+        vect[2] = max(nums[1] , nums[2]);
+        for(i = 3; i<size; i++)
+            vect[i] = max((vect[i-2] + nums[i]) , vect[i-1]);
+        sum2 = vect[size-1];
+        
+        if(sum1 > sum2) return sum1;
+        return sum2;
+    }
+};
