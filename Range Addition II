@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int maxCount(int m, int n, vector<vector<int>>& ops) {
+       int a=INT_MAX,b=INT_MAX;
+        if(ops.size()==0) return m*n;
+        for(auto v:ops){
+            a=min(a,v[0]);
+            b=min(b,v[1]);
+        }
+        return a*b;
+    }
+};
