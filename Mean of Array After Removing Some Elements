@@ -1,0 +1,19 @@
+class Solution {
+public:
+    double trimMean(vector<int>& arr) { 
+        int rm = (arr.size()*5)/100,x;
+        double sum=0;
+   
+        sort(arr.begin(),arr.end());
+        for(x = 0 ; x < rm ; x++)
+            arr.erase(arr.begin());
+        
+        for(x = 0 ; x < rm ; x++)
+            arr.pop_back();
+        
+        for(x= 0 ;x < arr.size() ; x++)
+            sum = sum + arr[x];
+        sum = sum / arr.size();
+        return sum;
+    }
+};
