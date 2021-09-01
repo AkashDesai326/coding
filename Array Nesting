@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int arrayNesting(vector<int>& nums) {
+        set<int> st;
+        int i=0, res=0, count=0, cur, prev;
+        for(int j=0; j<nums.size(); j++)
+        {
+            if (nums[j] == -1) continue;
+            cur = nums[j];
+            count = 1;
+            nums[j] = -1;
+            
+            while(nums[cur] != -1)
+            {
+                prev = cur;
+                cur = nums[cur];
+                nums[prev] = -1;
+                count++;
+            }
+            res = max(res, count);
+        }
+        return res;
+    }
+};
