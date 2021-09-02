@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<string> findRepeatedDnaSequences(string s) {
+        vector<string> substr;
+        map<string,int> m;
+        int i;
+        if(s.size()<=10)
+            return substr;
+        for(i=0;i<s.size();i++)
+        {
+            m[s.substr(i,10)] = m[s.substr(i,10)] + 1;
+            if(m[s.substr(i,10)] == 2)
+                substr.push_back(s.substr(i,10));
+        }
+        return substr;
+    }
+};
