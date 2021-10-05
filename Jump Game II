@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        int a[nums.size()], i;
+        a[0] = 0;
+        for(int j=1 ;j<nums.size();j++){
+            i=0;
+            while(i!=j){
+                if(i + nums[i]>=j){
+                    a[j] = a[i] + 1;
+                    break;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+        }
+        return a[nums.size()-1];
+    }
+};
