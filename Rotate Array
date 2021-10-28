@@ -1,0 +1,30 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        k = k % nums.size();
+        int i=0, start = 0, temp;
+        if(k==0)
+            return;
+        int g_c_d = gcd(k, nums.size());
+        while(g_c_d--)
+        {
+            start = i;
+            int temp = nums[i+k];
+            nums[i+k] = nums[i];
+            i += k;
+            while(start != i)
+            {
+                if(i+k > nums.size()-1)
+                {
+                    int rem = k - (nums.size() - i);
+                    i = 0 + rem;
+                }
+                else i += k;
+                int t = nums[i];
+                nums[i] = temp;
+                temp = t;
+            }
+            i = start + 1;
+         }
+    }
+};
