@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool res = true;
+    void preorder(TreeNode* root, TreeNode* root1) {
+        if(root && root1) {
+            if(root-> val != root1->val) {
+                res = false;  
+                return;
+            }
+        } else {
+            res = false;
+            return;
+        }
+        if(root && root1) {
+            if(root->left || root1->left) {
+                preorder(root->left, root1->left);
+            }
+            if(root->right || root1->right) {
+                preorder(root->right, root1->right);   
+            }   
+        }
+    }
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(p || q) {
+            preorder(p, q);   
+        }
+        return res;
+    }
+};
